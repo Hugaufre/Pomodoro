@@ -1,0 +1,31 @@
+body{
+    background-color: #c30303;
+}
+
+#timerTitle{
+    text-align: center;
+    color: white;
+}
+
+#timeSection{
+    text-align: center;
+}
+
+#controls{
+    text-align: center;
+}
+
+#init{
+    background-color: #c30303;
+    border-style: solid;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-color: white;
+}
+
+.textStyle{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}

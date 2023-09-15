@@ -10,7 +10,7 @@ for(var i = 0; i < buttons.length; i++){
     buttons[0].addEventListener("click",() =>{
 
         if(!islaunched){
-            document.getElementById("init").textContent = "Reinitialize"
+            document.getElementById("init").textContent = "REINITIALIZE"
             document.getElementById("switchPauseWork").textContent = "WORK"
             islaunched = true
                 decreaseWorkTime()
@@ -19,7 +19,7 @@ for(var i = 0; i < buttons.length; i++){
             pauseTime = 5
             clearInterval(refreshIntervalId)
             islaunched = false
-            document.getElementById("init").textContent = "Start"
+            document.getElementById("init").textContent = "START"
             document.getElementById("timer").textContent = 0 + ":"+ '00';
         }
     })
@@ -32,7 +32,9 @@ function decreaseWorkTime(){
 
     let minutes = parseInt(workTime / 60, 10)
     let seconds = parseInt(workTime % 60, 10)
-        seconds = seconds < 10 ? '0'+ seconds : seconds
+    
+    seconds = seconds < 10 ? '0'+ seconds : seconds
+    minutes = minutes < 10 ? '0'+ minutes : minutes
         
         document.getElementById("timer").textContent = minutes + ":" + seconds
         
@@ -58,6 +60,8 @@ function decreasePauseTime(){
         let seconds = parseInt(pauseTime % 60, 10)
 
         seconds = seconds < 10 ? '0'+ seconds : seconds
+        minutes = minutes < 10 ? '0'+ minutes : minutes
+
         document.getElementById("timer").textContent = minutes + ":" + seconds
         pauseTime == 0 ? 0 : pauseTime--
 

@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script defer src="Script/Script.js"></script>
+    <link rel="stylesheet" href="StyleSheet.css">
 </head>
 <body>
-    <h1> POMODORO TIMER</h1>
-    <h3 id ="switchPauseWork"> Nothing </h3>
-    <p id = "timer"></p>
+    <h1 id ="timerTitle">POMODORO TIMER</h1>
+
+    <div id ="timeSection" class = "textStyle">
+        <h3 id ="switchPauseWork"> Nothing </h3>
+        <p id = "timer">00:00</p>
+    </div>
 
     <section id = "controls">
-        <button id= "init"> Start</button>
-    
+        <button id= "init" class = "textStyle">START</button>
+    </section>
 </body>
 </html>
