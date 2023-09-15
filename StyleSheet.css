@@ -18,9 +18,9 @@ body{
 #init{
     background-color: #c30303;
     border-style: solid;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    border-radius: 30%;
+    width: 170px;
+    height: 50px;
     border-color: white;
 }
 
@@ -28,4 +28,31 @@ body{
     color: white;
     font-weight: bold;
     font-size: 20px;
+}
+#switch{
+    display: flex;
+    justify-content:space-around;
+    margin-left: 40%;
+    margin-right: 40%;
+    text-align: center;
+    
+}
+
+#timer{
+    font-size: 50px;
+}
+
+#pauseID{
+    background-color: black;
+    display: flex;
+    padding-left: 20%;
+    padding-right: 10%;
+}
+
+#workID{
+
+    display: flex;
+    padding-left: 10%;
+    padding-right: 20%;
+    box-shadow: 2px 2px 5px 5px black;
 }
