@@ -20,6 +20,8 @@ for(var i = 0; i < buttons.length; i++){
             pauseTime = 5
             clearInterval(refreshIntervalId)
             islaunched = false
+            switchPW = true
+            switchPauseWork()
             document.getElementById("init").textContent = "START"
             document.getElementById("timer").textContent = '00' + ":"+ '00';
         }
