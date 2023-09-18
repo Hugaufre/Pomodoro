@@ -1,5 +1,12 @@
+@font-face {
+    font-family: roboto;
+    src: url(Fonts/Roboto-Black.ttf);
+  }
+
+
 body{
     background-color: #c30303;
+    font-family:roboto;
 }
 
 #timerTitle{
