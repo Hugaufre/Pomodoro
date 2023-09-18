@@ -1,7 +1,9 @@
 const buttons = document.querySelectorAll("button")
 const hoverButton = document.getElementById("init")
-var workTime = 1500
-var pauseTime = 300
+var initWork = 15
+var initPause = 10
+var workTime = initWork-1
+var pauseTime = initPause-1
 var refreshIntervalId
 var refreshIntervalId2
 var switchPW = false
@@ -16,13 +18,13 @@ for(var i = 0; i < buttons.length; i++){
             islaunched = true
             decreaseWorkTime()
         }else{
-            workTime = 1500
-            pauseTime = 300
+            workTime = initWork-1
+            pauseTime = initPause-1
             clearInterval(refreshIntervalId)
             
             islaunched = false
             document.getElementById("init").textContent = "START"
-            document.getElementById("timer").textContent = '250' + ":"+ '00';
+            document.getElementById("timer").textContent = '25' + ":"+ '00';
             switchPW = true
             switchPauseWork()
         }
@@ -31,7 +33,7 @@ for(var i = 0; i < buttons.length; i++){
 
 function decreaseWorkTime(){
 
-    
+    console.log(workTime)
     refreshIntervalId = setInterval(function() {
 
     let minutes = parseInt(workTime / 60, 10)
@@ -44,9 +46,10 @@ function decreaseWorkTime(){
         
         workTime == 0 ? 0 : workTime--
         if(minutes == 0 && seconds == 0){
-                workTime = 1500
+                workTime = initWork-1
                 clearInterval(refreshIntervalId)
-                decreasePauseTime()
+                initPauseTimer()
+                decreasePauseTime()  
                 switchPauseWork()
             }
     }, 1_000)
@@ -65,9 +68,10 @@ function decreasePauseTime(){
         document.getElementById("timer").textContent = minutes + ":" + seconds
         pauseTime == 0 ? 0 : pauseTime--
 
-     if(minutes == 0 && seconds == 0){ 
-        pauseTime = 300
+     if(minutes == 0 && seconds == 0){
+        pauseTime = initPause-1
         clearInterval(refreshIntervalId)
+        initWorkTimer()
         decreaseWorkTime()
         switchPauseWork()
         }
@@ -109,3 +113,25 @@ hoverButton.addEventListener("mouseout", event => {
 
     hoverButton.setAttribute("style", "background-color: none")
 })
+
+function initPauseTimer(){
+
+    let minutes = parseInt(initPause / 60, 10)
+        let seconds = parseInt(initPause % 60, 10)
+
+        seconds = seconds < 10 ? '0'+ seconds : seconds
+        minutes = minutes < 10 ? '0'+ minutes : minutes
+
+        document.getElementById("timer").textContent = minutes + ":" + seconds
+}
+
+function initWorkTimer(){
+
+    let minutes = parseInt(initWork / 60, 10)
+        let seconds = parseInt(initWork % 60, 10)
+
+        seconds = seconds < 10 ? '0'+ seconds : seconds
+        minutes = minutes < 10 ? '0'+ minutes : minutes
+
+        document.getElementById("timer").textContent = minutes + ":" + seconds
+}
