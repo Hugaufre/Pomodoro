@@ -22,7 +22,7 @@ for(var i = 0; i < buttons.length; i++){
             
             islaunched = false
             document.getElementById("init").textContent = "START"
-            document.getElementById("timer").textContent = '00' + ":"+ '00';
+            document.getElementById("timer").textContent = '250' + ":"+ '00';
             switchPW = true
             switchPauseWork()
         }
