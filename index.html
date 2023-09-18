@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script defer src="Script/Script.js"></script>
-    <link rel="stylesheet" href="./CSS/StyleSheet.css">
+    <link rel="stylesheet" href="CSS/StyleSheet.css">
 </head>
 <body>
     <header>
@@ -22,17 +22,28 @@
         </div>
     </section>
 
-    <section>
-        <div class="sliderSection">
-            <input type="range" min="1" max="100" value="50" class="timeSliderRange">
-          </div>
-    </section>
     <section id ="timeSection" class = "textStyle">
         <p id = "timer">25:00</p>
     </section>
 
     <section id = "controls">
         <button id= "init" class = "textStyle">START</button>
+    </section>
+
+    <section id="sliderSection">
+        <h3> Settings </h3>
+        
+        <div class="workSlider">
+        <h2> WORK TIME </h2>
+            <input type="range" min="1" max="100" value="50" class="timeSliderRange">
+            <h2 id="workValue"> 0 </h2>
+          </div>
+          
+          <div class="pauseSlider">
+            <h2> PAUSE TIME </h2>
+            <input type="range" min="1" max="100" value="50" class="timeSliderRange">
+            <h2 id="workValue"> 0 </h2>
+          </div>
     </section>
 
     <section id="copyright">
