@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll("button")
 const hoverButton = document.getElementById("init")
-var initWork = 15
-var initPause = 10
+var initWork = 1500
+var initPause = 300
 var workTime = initWork-1
 var pauseTime = initPause-1
 var refreshIntervalId
