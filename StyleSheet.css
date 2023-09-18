@@ -90,3 +90,13 @@ body{
     font-size:20px;
     color:white;
 }
+
+.timeSliderRange{
+
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #c30303;
+    height: 20px;
+    border-radius: 20px;
+    border-width: 10px;
+}
