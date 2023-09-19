@@ -1,25 +1,14 @@
 @font-face {
     font-family: roboto;
-    src: url(./Fonts/Roboto-Black.ttf);
+    src: url(../Fonts/Roboto-Black.ttf);
   }
 
 
 body{
     background-color: #c30303;
     font-family:roboto;
-}
-
-#timerTitle{
     text-align: center;
     color: white;
-}
-
-#timeSection{
-    text-align: center;
-}
-
-#controls{
-    text-align: center;
 }
 
 #init{
@@ -81,12 +70,55 @@ body{
 }
 
 #copyright{
-    text-align:center;
-    position:fixed;
     bottom:0;
-    width:100%;
-    display:inline-block;
     vertical-align:top;
     font-size:20px;
     color:white;
+}
+
+.timeSliderRange{
+
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #c30303;
+    height: 25px;
+    border-radius: 20px;
+    border: solid white;
+}
+
+.timeSliderRange::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background: white;
+    cursor:pointer;
+}
+
+.timeSliderRange::-webkit-slider-thumb{
+    
+    width: 25px;
+    height: 25px;
+    background: red;
+    cursor: pointer;
+}
+
+.timeSliderRange::-ms-track{
+    
+    width: 25px;
+    height: 25px;
+    background: red;
+    cursor: pointer;
+}
+
+.timeSliderRange::-ms-fill-lower{
+
+    background: blue;
+}
+
+#sliderSection{
+
+    margin: auto;
+    width: 20%;
+    margin-top: 50px;
+    border: white dashed 5px;
 }

@@ -1,30 +1,84 @@
 const buttons = document.querySelectorAll("button")
 const hoverButton = document.getElementById("init")
-var initWork = 1500
-var initPause = 300
-var workTime = initWork-1
-var pauseTime = initPause-1
+
 var refreshIntervalId
 var refreshIntervalId2
 var switchPW = false
 var islaunched = false
 
-for(var i = 0; i < buttons.length; i++){
-    
-    buttons[0].addEventListener("click",() =>{
+var initWork = 600
+var initPause = 59
+var workTime = 1500
+var pauseTime = 59
 
+var workMinutes = 25
+var workSeconds = 0
+
+var workSlider = document.getElementById("workRange")
+var WorkValue = document.getElementById("workValue")
+var pauseSlider = document.getElementById("pauseRange")
+var pauseValue = document.getElementById("pauseValue")
+
+workValue.textContent = '10' + ":" + '00'
+pauseValue.textContent = '01' + ":" + '00'
+convertToMinSec()
+
+function convertToMinSec(){
+
+    workSlider.oninput = function(){
+        console.log(this.value-1)
+        workTime = this.value-1
+        initWork = this.value-1
+
+        let minutes = parseInt(this.value / 60, 10)
+        let seconds = parseInt(this.value % 60, 10)
+
+        seconds = seconds < 10 ? '0'+ seconds : seconds
+        minutes = minutes < 10 ? '0'+ minutes : minutes
+
+        workMinutes = minutes
+        workSeconds = seconds
+
+        document.getElementById("timer").innerHTML = minutes + ":" + seconds
+        workValue.innerHTML = minutes+" : "+seconds
+    }
+
+    pauseSlider.oninput = function(){
+
+        pauseTime = this.value-1
+        initPause = this.value-1
+
+        let minutes = parseInt(this.value / 60, 10)
+        let seconds = parseInt(this.value % 60, 10)
+    
+        seconds = seconds < 10 ? '0'+ seconds : seconds
+        minutes = minutes < 10 ? '0'+ minutes : minutes
+        
+        pauseValue.innerHTML = minutes+" : "+seconds
+        }
+}
+
+
+
+for(var i = 0; i < buttons.length; i++){
+
+    workSeconds = workSeconds < 10 ? '0'+ workSeconds : workSeconds
+    buttons[0].addEventListener("click",() =>{
+        console.log("value: "+workTime)
+        
         if(!islaunched){
             document.getElementById("init").textContent = "REINITIALIZE"
             islaunched = true
             decreaseWorkTime()
         }else{
-            workTime = initWork-1
-            pauseTime = initPause-1
             clearInterval(refreshIntervalId)
-            
+            workTime = initWork
+            pauseTime = initPause
             islaunched = false
+
+            
             document.getElementById("init").textContent = "START"
-            document.getElementById("timer").textContent = '25' + ":"+ '00';
+            document.getElementById("timer").textContent = workMinutes + ":"+ workSeconds
             switchPW = true
             switchPauseWork()
         }
@@ -46,7 +100,7 @@ function decreaseWorkTime(){
         
         workTime == 0 ? 0 : workTime--
         if(minutes == 0 && seconds == 0){
-                workTime = initWork-1
+                workTime = initWork
                 clearInterval(refreshIntervalId)
                 initPauseTimer()
                 decreasePauseTime()  
@@ -57,6 +111,7 @@ function decreaseWorkTime(){
 
 function decreasePauseTime(){
 
+    console.log("pausevalue: "+pauseTime)
     refreshIntervalId = setInterval(() => {
 
         let minutes = parseInt(pauseTime / 60, 10)
@@ -116,22 +171,24 @@ hoverButton.addEventListener("mouseout", event => {
 
 function initPauseTimer(){
 
-    let minutes = parseInt(initPause / 60, 10)
-        let seconds = parseInt(initPause % 60, 10)
+    var totalTime = initPause+1
+    let minutes = parseInt(totalTime / 60, 10)
+    let seconds = parseInt(totalTime % 60, 10)
 
-        seconds = seconds < 10 ? '0'+ seconds : seconds
-        minutes = minutes < 10 ? '0'+ minutes : minutes
+    seconds = seconds < 10 ? '0'+ seconds : seconds
+    minutes = minutes < 10 ? '0'+ minutes : minutes
 
-        document.getElementById("timer").textContent = minutes + ":" + seconds
+    document.getElementById("timer").textContent = minutes + ":" + seconds
 }
 
 function initWorkTimer(){
 
-    let minutes = parseInt(initWork / 60, 10)
-        let seconds = parseInt(initWork % 60, 10)
+    var totalTime = initWork+1
+    let minutes = parseInt(totalTime / 60, 10)
+    let seconds = parseInt(totalTime % 60, 10)
 
-        seconds = seconds < 10 ? '0'+ seconds : seconds
-        minutes = minutes < 10 ? '0'+ minutes : minutes
+    seconds = seconds < 10 ? '0'+ seconds : seconds
+    minutes = minutes < 10 ? '0'+ minutes : minutes
 
-        document.getElementById("timer").textContent = minutes + ":" + seconds
+    document.getElementById("timer").textContent = minutes + ":" + seconds
 }
