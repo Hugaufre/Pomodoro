@@ -6,9 +6,9 @@ var refreshIntervalId2
 var switchPW = false
 var islaunched = false
 
-var initWork = 600
+var initWork = 599
 var initPause = 59
-var workTime = 1500
+var workTime = 599
 var pauseTime = 59
 
 var workMinutes = 25
@@ -67,6 +67,9 @@ for(var i = 0; i < buttons.length; i++){
         console.log("value: "+workTime)
         
         if(!islaunched){
+
+            document.getElementById("workRange").disabled = true
+            document.getElementById("pauseRange").disabled = true
             document.getElementById("init").textContent = "REINITIALIZE"
             islaunched = true
             decreaseWorkTime()
@@ -75,7 +78,8 @@ for(var i = 0; i < buttons.length; i++){
             workTime = initWork
             pauseTime = initPause
             islaunched = false
-
+            document.getElementById("workRange").disabled = false
+            document.getElementById("pauseRange").disabled = false
             
             document.getElementById("init").textContent = "START"
             document.getElementById("timer").textContent = workMinutes + ":"+ workSeconds

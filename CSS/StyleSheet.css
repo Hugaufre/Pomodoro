@@ -51,7 +51,7 @@ body{
     width: 200px;
     height: 200px;
     border: solid;
-    border-radius: 300%
+    border-radius: 100%;
 }
 
 #pauseID{
@@ -106,7 +106,7 @@ body{
     
     width: 25px;
     height: 25px;
-    background: red;
+    background: none;
     cursor: pointer;
 }
 
@@ -118,7 +118,7 @@ body{
 #sliderSection{
 
     margin: auto;
-    width: 20%;
+    width: 300px;
     margin-top: 50px;
     border: white dashed 5px;
 }
