@@ -4,7 +4,8 @@ const hoverButton = document.getElementById("init")
 var refreshIntervalId
 var refreshIntervalId2
 var switchPW = false
-var islaunched = false
+var isLauched = false
+var isLocked = false
 
 var initWork = 599
 var initPause = 59
@@ -66,20 +67,17 @@ for(var i = 0; i < buttons.length; i++){
     buttons[0].addEventListener("click",() =>{
         console.log("value: "+workTime)
         
-        if(!islaunched){
-
-            document.getElementById("workRange").disabled = true
-            document.getElementById("pauseRange").disabled = true
+        if(!isLauched){
             document.getElementById("init").textContent = "REINITIALIZE"
-            islaunched = true
+            lockSlider()
+            isLauched = true
             decreaseWorkTime()
         }else{
             clearInterval(refreshIntervalId)
             workTime = initWork
             pauseTime = initPause
-            islaunched = false
-            document.getElementById("workRange").disabled = false
-            document.getElementById("pauseRange").disabled = false
+            isLauched = false
+            lockSlider()
             
             document.getElementById("init").textContent = "START"
             document.getElementById("timer").textContent = workMinutes + ":"+ workSeconds
@@ -195,4 +193,26 @@ function initWorkTimer(){
     minutes = minutes < 10 ? '0'+ minutes : minutes
 
     document.getElementById("timer").textContent = minutes + ":" + seconds
+}
+
+function lockSlider(){
+
+
+    if(!isLocked){
+
+        document.getElementById("workRange").disabled = true
+        document.getElementById("pauseRange").disabled = true
+        document.getElementById("workRange").style.opacity = "0.2"
+        document.getElementById("pauseRange").style.opacity = "0.2"
+
+        isLocked = true
+    }else{
+
+        document.getElementById("workRange").disabled = false
+        document.getElementById("pauseRange").disabled = false
+        document.getElementById("workRange").style.opacity = "1"
+        document.getElementById("pauseRange").style.opacity = "1"
+
+        isLocked = false
+    }
 }
